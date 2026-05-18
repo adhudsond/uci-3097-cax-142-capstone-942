@@ -342,9 +342,9 @@ This project is created for educational purposes as part of the CAP 942 Capstone
 
 ## 👤 Author
 
-**John**  
-CAP 942 - Capstone Project: AI Application Development  
-Date: 2026
+**Anthony Hudson**  
+CAP 942 - Capstone Project: AI Application Development for UCI 3097: AI Solutions Developer at Per Scolas
+Date: May, 2026
 
 ---
 
