@@ -37,7 +37,7 @@ This application leverages open-source LLMs to:
 ## 🛠️ Tech Stack
 
 ### Core Technologies
-- **Language**: Python 3.8+
+- **Language**: Python 3.8+ UV
 - **LLM Framework**: LangChain
 - **Open-Source LLM Options**:
   - Ollama (Llama 3, Mistral, Gemma)
@@ -121,7 +121,7 @@ Business-Process-Optimization/
 
 ### 1. Prerequisites
 - Python 3.8+ installed
-- pip package manager
+- uv package manager
 - (Optional) Ollama or GPT4All installed for local LLM execution
 
 ### 2. Installation
@@ -140,7 +140,7 @@ venv\Scripts\activate
 source venv/bin/activate
 
 # Install dependencies
-pip install -r requirements.txt
+uv add -r requirements.txt
 ```
 
 ### 3. Configuration
