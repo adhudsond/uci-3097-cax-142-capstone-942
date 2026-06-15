@@ -1,0 +1,18 @@
+# Core dependencies (also defined in pyproject.toml).
+# With uv:  uv sync   (preferred — reads pyproject.toml)
+# With pip: pip install -r requirements.txt
+
+streamlit>=1.33
+ollama>=0.3.0
+python-dotenv>=1.0
+
+# Optional: RAG / vector search
+# chromadb>=0.5
+# sentence-transformers>=3.0
+
+# Optional: Hugging Face backend
+# transformers>=4.40
+# torch>=2.2
+
+# Dev
+# pytest>=8.0

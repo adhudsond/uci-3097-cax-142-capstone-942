@@ -1,0 +1,13 @@
+Employee Onboarding (IT Provisioning)
+
+1. HR emails the IT team a PDF with the new hire's details.
+2. An IT engineer reads the PDF and manually creates an Active Directory account.
+3. The engineer manually creates a mailbox in the email system.
+4. The engineer creates a user in the ticketing system (ServiceNow).
+5. The engineer requests software licenses by emailing the procurement team.
+6. Once licenses are approved (1-3 days), the engineer installs software on the laptop.
+7. The engineer manually documents all credentials in a shared spreadsheet.
+8. The engineer emails the hiring manager to confirm setup is complete.
+
+Pain points: steps are sequential, heavily manual, and the 1-3 day license
+approval blocks laptop preparation. Credentials are stored in a spreadsheet.
