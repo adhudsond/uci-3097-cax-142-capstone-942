@@ -1,0 +1,17 @@
+New Server Provisioning Request
+
+1. A developer fills out a Word document template requesting a new server and emails it to the infrastructure team.
+2. The infrastructure lead reads the request and replies asking for missing details (environment, CPU, RAM, OS) about half the time.
+3. Once details are complete, the lead forwards the request to a manager for budget approval.
+4. The manager approves by replying to the email thread, usually within 2-4 business days.
+5. An engineer manually provisions a virtual machine through the hypervisor's web console, clicking through each setting by hand.
+6. The engineer installs the operating system and applies the standard hardening checklist from a printed PDF, ticking boxes manually.
+7. The engineer manually configures networking, firewall rules, and DNS entries.
+8. The engineer installs monitoring agents by copying commands from an internal wiki page.
+9. The engineer emails the requester the server's IP address and credentials.
+10. The new server is added to the asset inventory spreadsheet by hand.
+
+Pain points: request intake is unstructured and frequently incomplete, approvals
+stall in email, every build is done manually and inconsistently, the hardening
+checklist is paper-based, and there is no infrastructure-as-code or templating.
+A single server can take a week from request to delivery.

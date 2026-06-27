@@ -1,0 +1,17 @@
+Production Software Release
+
+1. A developer announces in a chat channel that a release is "ready to go."
+2. The release manager manually pulls the latest code and reads through the commit messages to figure out what changed.
+3. The release manager hand-writes release notes by reviewing the merged pull requests one by one.
+4. Testing is done manually by two QA staff who follow a shared checklist in a spreadsheet.
+5. If QA finds a bug, they message the developer directly in chat, and the fix is tracked informally in that thread.
+6. Once QA signs off (verbally, in chat), the release manager schedules a deployment for after business hours.
+7. At deployment time, an engineer manually copies build files to the production server over SFTP.
+8. The engineer restarts services by hand and watches the logs to confirm the app comes back up.
+9. If something breaks, the engineer manually restores the previous build from a backup folder.
+10. The release manager emails stakeholders that the release is live.
+
+Pain points: no formal change record, release notes are reconstructed by hand,
+testing and sign-off are informal and untracked, deployment is manual and
+error-prone, there is no automated rollback, and the whole process depends on
+specific people being available after hours.

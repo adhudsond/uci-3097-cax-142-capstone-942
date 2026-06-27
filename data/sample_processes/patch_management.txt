@@ -1,0 +1,16 @@
+Patch & Update Management
+
+1. An engineer manually checks vendor websites and security mailing lists each week to see what new patches have been released.
+2. The engineer keeps a running list of pending patches in a spreadsheet, color-coded by hand for urgency.
+3. To find out which machines need a given patch, the engineer remotes into servers one by one to check their current versions.
+4. The engineer schedules patching for a weekend maintenance window and emails staff a heads-up.
+5. During the window, the engineer logs into each machine individually and applies updates manually.
+6. If a patch requires a reboot, the engineer waits for each machine to come back up before moving to the next.
+7. When a patch breaks an application, the engineer troubleshoots live and, if needed, manually uninstalls it.
+8. The engineer updates the spreadsheet to mark machines as patched, though this sometimes gets missed.
+9. There is no central view of which systems are fully up to date at any given moment.
+
+Pain points: vulnerability tracking is manual and easy to fall behind on,
+inventory of versions is gathered by hand, patching does not scale beyond a
+handful of machines, reboots are serialized, failures are handled reactively,
+and there is no reliable compliance reporting on patch status.

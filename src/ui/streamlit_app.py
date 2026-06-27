@@ -2,9 +2,9 @@
 
 Run with:  uv run streamlit run src/ui/streamlit_app.py
 
-This is a skeleton: the layout and wiring are in place; the analysis/optimize
-calls go through the same core logic as the CLI. It degrades gracefully if the
-LLM backend isn't running yet so you can develop the UI independently.
+Layout and wiring go through the same core logic as the CLI. After a run, the
+generated analysis and optimized workflow can be downloaded as Markdown, plain
+text, HTML, or Word (.docx) documents.
 """
 
 from __future__ import annotations
@@ -19,6 +19,13 @@ ROOT = Path(__file__).resolve().parent.parent.parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from src.core.exporter import (  # noqa: E402
+    ExportPayload,
+    to_docx,
+    to_html,
+    to_markdown,
+    to_text,
+)
 from src.core.optimizer import WorkflowOptimizer  # noqa: E402
 from src.core.process_analyzer import ProcessAnalyzer  # noqa: E402
 from src.utils.validators import ValidationError, validate_process_description  # noqa: E402
@@ -39,6 +46,57 @@ def _sidebar() -> None:
             "proposes optimized versions to improve operational efficiency."
         )
         st.caption("CAP 942 Capstone — open-source LLM via Ollama.")
+
+
+def _download_section(payload: ExportPayload) -> None:
+    """Render download buttons for each export format."""
+    st.subheader("📄 Download report")
+    st.caption("Save this analysis and optimized workflow as a document.")
+
+    c1, c2, c3, c4 = st.columns(4)
+
+    c1.download_button(
+        "Markdown (.md)",
+        data=to_markdown(payload),
+        file_name="bpo_report.md",
+        mime="text/markdown",
+        use_container_width=True,
+    )
+    c2.download_button(
+        "Text (.txt)",
+        data=to_text(payload),
+        file_name="bpo_report.txt",
+        mime="text/plain",
+        use_container_width=True,
+    )
+    c3.download_button(
+        "HTML (.html)",
+        data=to_html(payload),
+        file_name="bpo_report.html",
+        mime="text/html",
+        use_container_width=True,
+    )
+
+    # .docx requires python-docx; offer it if available, else explain.
+    try:
+        docx_bytes = to_docx(payload)
+        c4.download_button(
+            "Word (.docx)",
+            data=docx_bytes,
+            file_name="bpo_report.docx",
+            mime=(
+                "application/vnd.openxmlformats-officedocument."
+                "wordprocessingml.document"
+            ),
+            use_container_width=True,
+        )
+    except RuntimeError:
+        c4.button(
+            "Word (.docx)",
+            disabled=True,
+            help="Install python-docx to enable: uv sync --extra docs",
+            use_container_width=True,
+        )
 
 
 def main() -> None:
@@ -79,20 +137,31 @@ def main() -> None:
             st.subheader("Analysis")
             st.markdown(analysis.analysis_text)
 
+            optimized_text = ""
             if optimize_clicked:
                 with st.spinner("Generating optimized workflow..."):
                     optimizer = WorkflowOptimizer()
                     optimization = optimizer.optimize(
                         process_text, analysis=analysis.analysis_text
                     )
+                optimized_text = optimization.optimized_workflow
                 st.subheader("Optimized Workflow")
-                st.markdown(optimization.optimized_workflow)
+                st.markdown(optimized_text)
+
+            # Offer downloads once we have results.
+            st.divider()
+            payload = ExportPayload(
+                process_description=process_text,
+                analysis=analysis.analysis_text,
+                optimized=optimized_text or "(Not generated — ran analysis only.)",
+            )
+            _download_section(payload)
 
         except Exception as exc:  # noqa: BLE001 - surface errors in the UI
             st.error(f"Something went wrong: {exc}")
             st.info(
                 "Make sure your LLM backend is running. For Ollama: "
-                "`ollama serve` and `ollama pull llama3`."
+                "start the server and `ollama pull llama3`."
             )
 
 

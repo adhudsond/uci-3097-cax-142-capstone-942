@@ -36,6 +36,28 @@ print(results["analysis"])
 print(results["optimized"])
 ```
 
+## Generating report documents
+
+After a run, you can save the analysis + optimized workflow as a document.
+
+**Web UI:** download buttons appear below the results — Markdown, Text, HTML,
+and Word (.docx). The .docx button is enabled only if `python-docx` is installed
+(`uv sync --extra docs`).
+
+**CLI:** use `--save` (format is inferred from the file extension):
+```powershell
+# Markdown
+& "$env:USERPROFILE\.local\bin\uv.exe" run python -m src.ui.cli --file data/sample_processes/ticket_triage.txt --save report.md
+
+# Word document
+& "$env:USERPROFILE\.local\bin\uv.exe" run python -m src.ui.cli --file data/sample_processes/onboarding.txt --save report.docx
+
+# Force a format explicitly
+& "$env:USERPROFILE\.local\bin\uv.exe" run python -m src.ui.cli "Some process..." --save out.html --format html
+```
+Supported formats: `markdown` (.md), `text` (.txt), `html` (.html), `docx`.
+For `.docx`, install the extra first: `uv sync --extra docs`.
+
 ## Tips
 
 - Start with the included sample in `data/sample_processes/onboarding.txt`.

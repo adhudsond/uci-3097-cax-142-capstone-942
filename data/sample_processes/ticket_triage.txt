@@ -1,0 +1,15 @@
+Helpdesk Ticket Triage
+
+1. Support tickets arrive through three different channels: a web form, a shared email inbox, and walk-ups that staff jot down on sticky notes.
+2. A first-line technician manually copies email and sticky-note requests into the ticketing system so everything is in one place (web-form tickets are already there).
+3. The technician reads each new ticket and guesses a priority based on how urgent the wording sounds.
+4. The technician manually assigns the ticket to a team (network, hardware, software, or accounts) based on their best judgment.
+5. Frequently a ticket is assigned to the wrong team and gets bounced back and forth a few times before landing in the right place.
+6. Tickets with no clear owner sit unassigned in a general queue that nobody checks regularly.
+7. When a ticket is resolved, the technician writes a free-text closing note; there is no standard format.
+8. At month end, a manager manually counts tickets by category in a spreadsheet to build a report.
+
+Pain points: multiple uncoordinated intake channels, manual re-entry, subjective
+and inconsistent prioritization, frequent misrouting, an unmonitored catch-all
+queue, and manual reporting. Similar issues recur constantly but there is no
+knowledge base, so technicians re-solve the same problems from scratch.

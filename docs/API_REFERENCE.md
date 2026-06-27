@@ -76,6 +76,27 @@ Fields: `process_description: str`, `optimized_workflow: str`, `analysis_used: s
 
 - `validate_process_description(text: str) -> str` (raises `ValidationError`)
 
+---
+
+## `src.core.exporter`
+
+Generates downloadable report documents from results.
+
+### `ExportPayload`
+Dataclass holding everything a document contains. Fields:
+`process_description: str`, `analysis: str`, `optimized: str`,
+`comparison: str | None = None`, `title: str`, `generated_at: str` (auto-set).
+
+### Renderers
+- `to_markdown(payload: ExportPayload) -> str`
+- `to_text(payload: ExportPayload) -> str`
+- `to_html(payload: ExportPayload) -> str`
+- `to_docx(payload: ExportPayload) -> bytes` (requires `python-docx`)
+
+### `FORMATS`
+Dict mapping format name → `(renderer, extension, is_binary)`. Used by the CLI
+to infer format from a file extension.
+
 ## `src.utils.logger`
 
 - `get_logger(name: str) -> logging.Logger`

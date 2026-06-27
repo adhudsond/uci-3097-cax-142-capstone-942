@@ -1,0 +1,16 @@
+Employee Offboarding (IT De-provisioning)
+
+1. HR notifies IT of a departure by email, sometimes on the employee's last day or even after they've left.
+2. An IT technician reads the email and starts a manual checklist kept in a personal document.
+3. The technician disables the Active Directory account, but only when they get around to it that day.
+4. The technician manually removes the user from email distribution lists one at a time.
+5. The technician revokes access to cloud apps (CRM, file storage, code repos) by logging into each admin console separately.
+6. Company hardware (laptop, phone, badge) is collected ad hoc; sometimes it's noted in the asset spreadsheet, sometimes not.
+7. The departed employee's files and mailbox are left in place "just in case," with no defined retention period.
+8. Shared passwords the employee knew are rarely rotated.
+9. There is no final confirmation step verifying that every access point was actually closed.
+
+Pain points: notification is late and informal, de-provisioning is slow and
+manual across many disconnected systems, access is frequently left active after
+departure (a serious security risk), hardware return is inconsistently tracked,
+and there is no audit trail proving access was fully revoked.
